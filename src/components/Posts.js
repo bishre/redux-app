@@ -13,6 +13,8 @@ class Posts extends Component {
       .then(data=>this.setState({posts:data}));
   }
   render() {
+    const newPost = this.props.post;
+    this.state.posts.push(newPost);
     const postItems=this.state.posts.map(post=>
       <div key={post.id}>
         <h2>{post.title}</h2>

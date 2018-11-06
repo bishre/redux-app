@@ -12,11 +12,24 @@ class PostForm extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const post = {
+      title: this.state.title,
+      body: this.state.body
+    }
+    this.props.handleSubmit(post);
+    this.setState({
+      title:'',
+      body:''
+    })
+  }
   render() {
     return (
       <div className="Postform">
         <h1>Add Post</h1>
-          <form>
+          <form onSubmit={this.onSubmit.bind(this)}>
             <div>
               <label>Title: </label>
               <br />

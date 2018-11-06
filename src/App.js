@@ -7,15 +7,21 @@ class App extends Component {
   constructor() {
     super();
     this.state={
-
+      newPost: []
     };
+  }
+
+  handleSubmit(post) {
+    this.setState({
+      newPost: post
+    })
   }
   render() {
     return (
       <div className="App">
-        <PostForm />
+        <PostForm handleSubmit={this.handleSubmit.bind(this)}/>
         <hr />
-        <Posts />
+        <Posts post={this.state.newPost}/>
       </div>
     );
   }
